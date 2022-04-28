@@ -1,4 +1,4 @@
 # db-university
 
 
-![img dn](/img/uni_db_edit.png)
+![img dn](/img/uni_db_mod.png)
