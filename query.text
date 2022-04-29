@@ -1,5 +1,5 @@
 1. Contare quanti iscritti ci sono stati ogni anno
-Query => SELECT COUNT(*) AS `number_students`, YEAR(`enrolment_date`) as `enrollment_year` FROM `students` GROUP BY YEAR(`enrolment_date`);
+Query => SELECT COUNT(*) AS `number_students`, YEAR(`enrolment_date`) AS `enrollment_year` FROM `students` GROUP BY YEAR(`enrolment_date`);
 
 2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio    
 Query => SELECT COUNT(*) as `teachers_number`, `office_number` FROM `teachers` GROUP BY `office_number`;
