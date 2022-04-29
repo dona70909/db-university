@@ -70,22 +70,25 @@ relativo dipartimento, in ordine alfabetico per cognome e nome:
 7. Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per
 superare ciascuno dei suoi esami :  
 
-SELECT 
-COUNT(`exam_student`.`exam_id`) AS `exam_failed_number`,
-`students`.`name` AS `student_name`,
-`students`.`surname` AS `student_surname`,
-`courses`.`name` AS  `course_name`  
+    SELECT 
+    COUNT(`exam_student`.`exam_id`) AS `exams_student_repeated`,
 
-FROM `courses`
-RIGHT JOIN `exams`
-ON `courses`.`id` = `exams`.`course_id`
+    MAX(`exam_student`.`vote`) AS `max_vote`, 
 
-RIGHT JOIN `exam_student`
-ON `exams`.`id`	=`exam_student`.`exam_id`
+    `students`.`name` AS `student_name`,
+    `students`.`surname` AS `student_surname`,
+    `courses`.`name` AS  `course_name` 
 
-RIGHT JOIN `students`
-ON `exam_student`.`student_id`= `students`.`id`
+    FROM `courses`
 
-WHERE `exam_student`.`vote` < 18
-GROUP BY  `student_name`, `student_surname`,`course_name`
-ORDER BY `student_surname`, `student_name`;
+    RIGHT JOIN `exams`
+    ON `courses`.`id` = `exams`.`course_id`
+
+    RIGHT JOIN `exam_student`
+    ON `exams`.`id`	=`exam_student`.`exam_id`
+
+    RIGHT JOIN `students`
+    ON `exam_student`.`student_id`= `students`.`id`
+    
+    GROUP BY `student_name`, `student_surname`,`course_name`
+    HAVING `exams_student_repeated` > 0  AND `max_vote` > 18;
