@@ -48,7 +48,7 @@ relativo dipartimento, in ordine alfabetico per cognome e nome:
 
 6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54) :
 
-    SELECT `departments`.`name` AS `department_name`,`degrees`.`name` AS `degree`, `courses`.`name` AS `course`, `teachers`.`name` AS `teachers_name`,`teachers`.`surname` AS `teachers_surname`
+    SELECT `teachers`.`name` AS `teachers_name`,`teachers`.`surname` AS `teachers_surname`
 
     FROM `departments`
     RIGHT JOIN `degrees`
