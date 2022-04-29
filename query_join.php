@@ -65,6 +65,8 @@ relativo dipartimento, in ordine alfabetico per cognome e nome:
 
     WHERE `departments`.`name` = "Dipartimento di Matematica";
 
+    ORDER BY `teachers`.`surname`;
+
 7. Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per
 superare ciascuno dei suoi esami   
 
