@@ -48,22 +48,11 @@ relativo dipartimento, in ordine alfabetico per cognome e nome:
 
 6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54) :
 
-    A) SELECT `degrees`.`name` AS `degree`, `courses`.`name` AS `course`, `teachers`.`name` AS `teachers_name`,`teachers`.`surname` AS `teachers_surname`
-        FROM `degrees`
-        RIGHT JOIN `courses`
-        ON `degrees`.`id` = `courses`.`degree_id`
-
-        RIGHT JOIN `course_teacher`
-        ON  `courses`.`id` = `course_teacher`.`course_id`  
-
-        RIGHT JOIN `teachers`
-        ON `course_teacher`.`teacher_id`  =  `teachers`.`id`
-        
-        WHERE `degrees`.`id` = 54;
+    
 
                                             
 
-    B)  SELECT `departments`.`name` AS `department_name`,`degrees`.`name` AS `degree`, `courses`.`name` AS `course`, `teachers`.`name` AS `teachers_name`,`teachers`.`surname` AS `teachers_surname`
+    SELECT `departments`.`name` AS `department_name`,`degrees`.`name` AS `degree`, `courses`.`name` AS `course`, `teachers`.`name` AS `teachers_name`,`teachers`.`surname` AS `teachers_surname`
 
         FROM `departments`
         RIGHT JOIN `degrees`
