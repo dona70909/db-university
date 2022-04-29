@@ -89,4 +89,4 @@ RIGHT JOIN `students`
 ON `exam_student`.`student_id`= `students`.`id`
 
 WHERE `exam_student`.`vote` < 18
-GROUP BY  `student_name`, `student_surname`,`course_name`
+GROUP BY  `student_name`, `student_surname`,`course_name`;
