@@ -48,23 +48,38 @@ relativo dipartimento, in ordine alfabetico per cognome e nome:
 
 6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54) :
 
-    
-
-                                            
-
     SELECT `departments`.`name` AS `department_name`,`degrees`.`name` AS `degree`, `courses`.`name` AS `course`, `teachers`.`name` AS `teachers_name`,`teachers`.`surname` AS `teachers_surname`
 
-        FROM `departments`
-        RIGHT JOIN `degrees`
-        ON `departments`.`id` = `degrees`.`department_id` 
+    FROM `departments`
+    RIGHT JOIN `degrees`
+    ON `departments`.`id` = `degrees`.`department_id` 
 
-        RIGHT JOIN `courses`
-        ON `degrees`.`id` = `courses`.`degree_id`
+    RIGHT JOIN `courses`
+    ON `degrees`.`id` = `courses`.`degree_id`
 
-        RIGHT JOIN `course_teacher`
-        ON  `courses`.`id` = `course_teacher`.`course_id`  
+    RIGHT JOIN `course_teacher`
+    ON  `courses`.`id` = `course_teacher`.`course_id`  
 
-        RIGHT JOIN `teachers`
-        ON `course_teacher`.`teacher_id`  =  `teachers`.`id`
+    RIGHT JOIN `teachers`
+    ON `course_teacher`.`teacher_id`  =  `teachers`.`id`
 
-        WHERE `departments`.`name` = "Dipartimento di Matematica";
+    WHERE `departments`.`name` = "Dipartimento di Matematica";
+
+7. Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per
+superare ciascuno dei suoi esami   
+
+
+SELECT 
+COUNT(`exam_student`.`exam_id`) AS `exams_failed`
+FROM `courses`
+RIGHT JOIN `exams`
+ON `courses`.`id` = `exams`.`course_id`
+
+RIGHT JOIN `exam_student`
+ON `exams`.`id`	=`exam_student`.`exam_id`
+
+RIGHT JOIN `students`
+ON `exam_student`.`student_id`= `students`.`id`
+
+WHERE `exam_student`.`vote` < 18
+GROUP BY  `exam_student`.`exam_id`
