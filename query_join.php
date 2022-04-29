@@ -33,3 +33,15 @@ relativo dipartimento, in ordine alfabetico per cognome e nome:
     RIGHT JOIN `students`
     ON `degrees`.`id` = `students`.`degree_id`
     ORDER BY  `students`.`surname`  ASC, `students`.`name` ASC;
+
+5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti   
+    SELECT `degrees`.`name` AS `degree`, `courses`.`name` AS `course`, `teachers`.`name` AS `teachers_name`,`teachers`.`surname` AS `teachers_surname`
+    FROM `degrees`
+    RIGHT JOIN `courses`
+    ON `degrees`.`id` = `courses`.`degree_id`
+
+    RIGHT JOIN `course_teacher`
+    ON  `courses`.`id` = `course_teacher`.`course_id`  
+
+    RIGHT JOIN `teachers`
+    ON `course_teacher`.`teacher_id`  =  `teachers`.`id`;
