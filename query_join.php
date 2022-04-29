@@ -68,11 +68,9 @@ relativo dipartimento, in ordine alfabetico per cognome e nome:
     ORDER BY `teachers`.`surname`;
 
 7. Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per
-superare ciascuno dei suoi esami   
-
+superare ciascuno dei suoi esami :  
 
 SELECT 
-
 COUNT(`exam_student`.`exam_id`) AS `exams_failed`,
 `students`.`name` AS `student_name`,
 `students`.`surname` AS `student_surname`,
