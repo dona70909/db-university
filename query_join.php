@@ -10,7 +10,7 @@
     SELECT `departments`.`name` AS `department` , `degrees`.`name` AS `degree_name`
     FROM `departments`
     JOIN  `degrees`
-    ON  `degrees`.`id` = `departments`.`id`
+    ON  `degrees`.`department_id` = `departments`.`id`
     WHERE `departments`.`name` = "Dipartimento di Neuroscienze";
 
 3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44) :  
