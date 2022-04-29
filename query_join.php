@@ -71,7 +71,7 @@ relativo dipartimento, in ordine alfabetico per cognome e nome:
 superare ciascuno dei suoi esami :  
 
 SELECT 
-COUNT(`exam_student`.`exam_id`) AS `exams_failed`,
+COUNT(`exam_student`.`exam_id`) AS `exam_failed_number`,
 `students`.`name` AS `student_name`,
 `students`.`surname` AS `student_surname`,
 `courses`.`name` AS  `course_name`  
@@ -87,4 +87,5 @@ RIGHT JOIN `students`
 ON `exam_student`.`student_id`= `students`.`id`
 
 WHERE `exam_student`.`vote` < 18
-GROUP BY  `student_name`, `student_surname`,`course_name`;
+GROUP BY  `student_name`, `student_surname`,`course_name`
+ORDER BY `course_name`;
