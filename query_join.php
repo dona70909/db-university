@@ -70,7 +70,12 @@ superare ciascuno dei suoi esami
 
 
 SELECT 
-COUNT(`exam_student`.`exam_id`) AS `exams_failed`
+
+COUNT(`exam_student`.`exam_id`) AS `exams_failed`,
+`students`.`name` AS `student_name`,
+`students`.`surname` AS `student_surname`,
+`courses`.`name` AS  `course_name`  
+
 FROM `courses`
 RIGHT JOIN `exams`
 ON `courses`.`id` = `exams`.`course_id`
@@ -82,4 +87,4 @@ RIGHT JOIN `students`
 ON `exam_student`.`student_id`= `students`.`id`
 
 WHERE `exam_student`.`vote` < 18
-GROUP BY  `exam_student`.`exam_id`
+GROUP BY  `student_name`, `student_surname`,`course_name`
